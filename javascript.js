@@ -1,3 +1,23 @@
+
+
+    let final=0;
+       
+    let c_w=0;
+    let u_w=0;
+
+const buttons = document.querySelectorAll('button');
+
+buttons.forEach((button)=>{ 
+    button.addEventListener('click', function something()
+    {
+      if(final==1){return}  
+      playRound(button.id);
+    })
+ });
+
+
+
+
 function computer_choice()
 {
     return Math.floor(Math.random() * 3);
@@ -29,64 +49,83 @@ function user_choice()
 
 
 
-let c_w=0;
-let u_w=0;
-
-for(let i=0;i<5;i++)
-{
-    let u = user_choice()
-    let c = actual_comp();
-
-    if(c==u)
+function playRound(x)
     {
-        console.log("Draw")
-        i=i-1
-    }
-    else if(c=="rock" && u == "paper")
-    {
-        u_w=u_w+1
-        console.log("You win")
+    
+        let u = x;
+        let c = actual_comp();
 
-    }
-    else if(c=="rock" && u == "scissor")
-    {
-        c_w=c_w+1
-        console.log("You lose")
 
-    }
-    else if(c=="paper" && u=="rock")
-    {
-        c_w=c_w+1
-        console.log("You lose")
+        if(c_w>=5 || u_w>=5)
+        {
+            result();
+            final=1;
+        }
 
+        else
+        {
+    
+        if(c==u)
+        {
+            console.log("Draw")
+          
+        }
+        else if(c=="rock" && u == "paper")
+        {
+            u_w=u_w+1
+            console.log("You win")
+    
+        }
+        else if(c=="rock" && u == "scissor")
+        {
+            c_w=c_w+1
+            console.log("You lose")
+    
+        }
+        else if(c=="paper" && u=="rock")
+        {
+            c_w=c_w+1
+            console.log("You lose")
+    
+        }
+        else if(c=="paper" && u=="scissor")
+        {
+            u_w=u_w+1
+            console.log("You win")
+    
+        }
+        else if(c=="scissor" && u== "rock")
+        {
+            u_w=u_w+1
+            console.log("You win")
+    
+        }
+        else if(c=="scissor" && u== "paper")
+        {
+            c_w=c_w+1
+            console.log("You lose")
+    
+        }
+    
+        else{
+            console.log("Do it properly-")
+            
+        }
     }
-    else if(c=="paper" && u=="scissor")
-    {
-        u_w=u_w+1
-        console.log("You win")
+    
 
-    }
-    else if(c=="scissor" && u== "rock")
-    {
-        u_w=u_w+1
-        console.log("You win")
-
-    }
-    else if(c=="scissor" && u== "paper")
-    {
-        c_w=c_w+1
-        console.log("You lose")
-
-    }
-
-    else{
-        console.log("Do it properly-")
-        i=i-1
-    }
+    console.log(c_w)
+    console.log(u_w)
+  
+    
 }
 
 
-if(u_w==c_w)
+    
+    
+function result()
+{ 
+ if(u_w==c_w)
 {
     console.log("Great Draw")
 }
@@ -98,6 +137,11 @@ else{
     console.log("You lose total")
 }
 
-console.log(c_w)
-console.log(u_w)
+}
 
+const ndiv = document.querySelector('div');
+ const ndiv1 = document.createElement('p');
+ ndiv1.style.color = 'red';
+ndiv1.textContent='Hey im red';
+ndiv.appendChild(ndiv1);
+ 
